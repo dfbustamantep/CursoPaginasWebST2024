@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoja de vida con Vue</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!--Implementar vue de forma global-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  </head>
+  <body>
+    <!--Div que esta ligado con Vue-->
+    <div id="app">
+      <header>
+        <img :src="headerImage" alt="Imagen de Encabezado" id="profileImage" />
+        <h1>{{ title }}</h1>
+      </header>
+
+      <nav>
+        <a href="#perfil">Perfil</a>
+        <a href="#actividades">Actividades</a>
+        <a href="#vinculos">Vinculos de interes</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#calificaciones">Calificaciones</a>
+      </nav>
+
+      <section id="perfil">
+        <h2>Mi perfil</h2>
+        <p>{{profile}}</p>
+        <!--Boton para cambiar imagen de perfil-->
+        <input type="file" @change="uploadImage" />
+      </section>
+
+      <section id="actividades">
+        <h2>Actividades</h2>
+        <div>
+          <h3>Videojuegos</h3>
+          <ol>
+            <li v-for="game in games">{{game}}</li>
+          </ol>
+        </div>
+
+        <div>
+          <h3>Peliculas</h3>
+          <ol>
+            <li v-for="movie in movies">{{movie}}</li>
+          </ol>
+        </div>
+      </section>
+
+    <!--Seccion de vinculos-->
+      <section id="vinculos">
+        <h2>Vinculos de interes</h2>
+        <p>{{LinkText}}<a :href="linkUrl" target="_blank">{{linkLabel}}</a></p>
+      </section>
+
+    <!--Seccion de contacto-->
+    <footer id="contacto">
+        <address>
+            <strong>Autor: </strong>{{author}}
+            <br>
+            <strong>Correo: </strong>{{email}}
+        </address>
+    </footer>
+
+    <!--Seccion de calificaciones-->
+      <section id="calificaciones">
+        <h2>Calificaciones de cursos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Curso</th>
+              <th>Calificación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="grade in grades">
+              <td>{{grade.course}}</td>
+              <td>{{grade.grade}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="formulario-calificaciones">
+        <h2>Añadir calificación</h2>
+        <form @submit.prevente="addGrade">
+          <label for="course">Curso:</label>
+          <input type="text" v-model="newCourse" required >
+          
+
+          <label for="grade">Calificación:</label>
+          <input type="number" v-model="newGrade" required >
+
+          <button type="submit">Añadir</button>
+        </form>
+      <section>
+    </div>
+
+
+    <script src="app.js"></script>
+
+
+  </body>
+</html>

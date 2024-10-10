@@ -1,0 +1,18 @@
+header{
+    color:black ;
+    background-color: black;
+    font: 100 20px;
+}
+
+.head{
+    color: white;
+    font-size: 30px;
+}
+
+#sec1,#sec2,#footer{
+    background-color: brown;
+}
+
+nav>p{
+    color: pink;
+}
